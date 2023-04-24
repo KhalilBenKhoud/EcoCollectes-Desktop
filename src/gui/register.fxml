@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -9,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="533.0" prefWidth="723.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.RegisterController">
+<AnchorPane id="AnchorPane" fx:id="registerPane" prefHeight="533.0" prefWidth="723.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.RegisterController">
    <children>
       <VBox prefHeight="533.0" prefWidth="265.0" style="-fx-background-color: cadetblue;">
          <children>
@@ -31,8 +32,11 @@
       <Label layoutX="360.0" layoutY="241.0" prefHeight="21.0" prefWidth="58.0" text="Gender" />
       <Label layoutX="357.0" layoutY="289.0" prefHeight="21.0" prefWidth="67.0" text="Password" />
       <Label layoutX="325.0" layoutY="336.0" prefHeight="21.0" prefWidth="129.0" text="Confirm Password" />
-      <Button id="registerBtn" fx:id="registerBtn" layoutX="446.0" layoutY="387.0" mnemonicParsing="false" onAction="#register" style="-fx-background-color: green; -fx-border-radius: 35px;" text="Register" textFill="#fcfcfc" />
+      <Button id="registerBtn" fx:id="registerBtn" layoutX="447.0" layoutY="431.0" mnemonicParsing="false" onAction="#register" style="-fx-background-color: green; -fx-border-radius: 35px;" text="Register" textFill="#fcfcfc" />
       <PasswordField id="tfPassword" fx:id="tfPassword" layoutX="465.0" layoutY="284.0" promptText="password" />
       <PasswordField id="tfConfirmPassword" fx:id="tfConfirmPassword" layoutX="465.0" layoutY="331.0" promptText="confirm password" />
+      <Hyperlink layoutX="324.0" layoutY="476.0" onAction="#redirectToLogin" style="-fx-font-size: 16px;" text="already have an account ? sign in" />
+      <Button fx:id="imageBtn" layoutX="480.0" layoutY="380.0" mnemonicParsing="false" onAction="#upload" style="-fx-background-color: gray;" text="select image" />
+      <Label layoutX="337.0" layoutY="387.0" text="Profile image" />
    </children>
 </AnchorPane>

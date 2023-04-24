@@ -18,10 +18,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import services.UserService ;
 import com.sun.org.apache.xerces.internal.util.FeatureState;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException ;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,6 +38,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import utils.DataBase;
 /**
@@ -45,7 +49,8 @@ import utils.DataBase;
  */
 public class RegisterController implements Initializable {
    
-    
+    @FXML
+    private AnchorPane registerPane ;
     @FXML
     private Button registerBtn;
     @FXML
@@ -62,7 +67,10 @@ public class RegisterController implements Initializable {
     private PasswordField tfPassword;
     @FXML
     private PasswordField tfConfirmPassword;
+     @FXML
+    private Button imageBtn ;
     
+    private String image_filename = "" ;
 
     
     @Override
@@ -71,7 +79,7 @@ public class RegisterController implements Initializable {
     }    
     
     @FXML
-    private void register(ActionEvent event)throws IOException {
+    public void register(ActionEvent event)throws IOException {
         
        
         String username = tfUsername.getText();
@@ -92,6 +100,13 @@ public class RegisterController implements Initializable {
                 alert.setContentText("please fill all the fields");
                 alert.showAndWait();
             }
+            else if (!email.contains("@") || !email.contains(".") || !(email.indexOf(".")  > email.indexOf("@") + 1)  ) {
+                 alert = new Alert(AlertType.ERROR);
+                    alert.setTitle("Error Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("invalid email");
+                    alert.showAndWait();
+            }
             else if(password.length() <8){
                 
                     alert = new Alert(AlertType.ERROR);
@@ -110,21 +125,56 @@ public class RegisterController implements Initializable {
             }
                 else{
                      int tel = Integer.parseInt(phone);
-                    User u = new User(tel,username,email,address,password,gender,"");
+                    User u = new User(tel,username,email,address,password,gender,image_filename);
                     UserService s  =new UserService();
+                    
                     s.ajouter(u);
                     
-                    alert = new Alert(AlertType.INFORMATION);
-                    alert.setTitle("Information Message");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Ajout avec succés");
-                    alert.showAndWait();
+                 
                 
                     }
                 }
-                  catch(Exception e){
-                       e.printStackTrace();
+                    catch(SQLException e) {
+                     Alert  alert = new Alert(AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("registration error");
+                    alert.setContentText("duplicate entry");
+                    alert.showAndWait();
                     }
+                  catch(Exception ex){
+                   Alert  alert = new Alert(AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("registration error");
+                    alert.setContentText(ex.getMessage());
+                    alert.showAndWait();
+                   }
+    }
+    
+    public void redirectToLogin(ActionEvent event)throws IOException {
+      FXMLLoader loader = new FXMLLoader();
+    loader.setLocation(getClass().getResource("login.fxml"));
+    Parent root = loader.load();
+    Scene mainScene = new Scene(root);
+
+
+    Stage primaryStage = (Stage) registerPane.getScene().getWindow();
+    primaryStage.setScene(mainScene);
+    primaryStage.show();
+    
+    }
+    
+       public void upload(ActionEvent event) {
+        FileChooser fc = new FileChooser();
+        String imageFile = "";
+        File f = fc.showOpenDialog(null);
+
+        if (f != null) {
+            imageFile = f.getAbsolutePath();
+            System.out.println(imageFile);
+           
+            image_filename = imageFile ;
+            imageBtn.setText(f.getName()) ;
+        }
     }
     
 }

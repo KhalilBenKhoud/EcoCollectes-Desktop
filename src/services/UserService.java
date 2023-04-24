@@ -8,6 +8,7 @@ package services;
  *
  * @author khalil
  */
+import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
 import entities.User;
 import utils.DataBase;
 import java.sql.Connection;
@@ -26,6 +27,7 @@ import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.util.*;
+import javafx.scene.control.Alert;
 
 
 public class UserService {
@@ -74,8 +76,20 @@ public class UserService {
           
 
             ps.executeUpdate();
+            
+             
+                  Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("succesfully registered");
+                    alert.showAndWait(); 
+                    
         } catch (SQLException ex) {
-            ex.printStackTrace();
+              Alert  alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("registration error");
+                    alert.setContentText(ex.getMessage());
+                    alert.showAndWait();
         }
     }
         
@@ -104,8 +118,13 @@ public class UserService {
              ResultSet rst = pst.executeQuery();
               while (rst.next()) {
                 p = new User(
-                    rst.getInt("id"),
-                    rst.getString("username")
+                    rst.getInt("phone"),
+                    rst.getString("username"),
+                    rst.getString("email"),
+                    rst.getString("address"),
+                    rst.getString("password"),
+                     rst.getString("gender"),
+                     rst.getString("image_filename")
                    
             );
               }
@@ -116,6 +135,55 @@ public class UserService {
                return p ;
            }
            
+             public void modifier(User user, User newuser) {
+        try {
+            String req ="update user set username=?,email=?,phone=?,address=?,password=?,image_filename=?,gender=? where id=?";
+            PreparedStatement pst = connexion.prepareStatement(req);
+            pst.setString(1, newuser.getUsername());
+            pst.setString(2, newuser.getEmail());
+            pst.setInt(3, newuser.getPhone());
+            pst.setString(4, newuser.getAddress());
+            pst.setString(5, newuser.getPassword());
+            pst.setString(6, newuser.getImage_filename());
+            pst.setString(7, newuser.getGender());
+             pst.setInt(8, user.getId());
+            pst.executeUpdate();
            
+            System.out.println("Utlisateur est modifié");
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+    }}
+             
+             public int compteExiste(String email, String password) {
+                 int n = 0 ;
+                 String req = "select * from user where email=? and password=?" ;
+        try {
+            PreparedStatement pst = connexion.prepareStatement(req);
+            pst.setString(1,email) ;
+            pst.setString(2,password) ;
+             ResultSet rst = pst.executeQuery();
+             if(rst.next()) {
+                 n = rst.getInt(1) ;
+             }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+                 
+             return n ;    
+         }
+             
+        
+          public void envoyerCodeVerif(String email) throws MessagingException {
+        Random rand = new Random();
+        int randomCode = rand.nextInt(999999);
+        String subject = "Reseting Code";
+        String message = "Your reset code is " + randomCode + "";
+
+        try {
+            JavaMailUtil.sendMail(email, subject, message);
+        } catch (javax.mail.MessagingException ex) {
+            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
 }

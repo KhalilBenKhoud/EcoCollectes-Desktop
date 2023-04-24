@@ -35,7 +35,7 @@ public class Eco {
          // service.ajouter(p) ;
          
          
-         // service.delete(20) ;
+          service.delete(22) ;
             System.out.println(service.findUserById(13).getUsername());
          
         } catch (SQLException ex) {
