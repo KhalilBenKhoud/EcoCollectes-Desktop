@@ -91,8 +91,16 @@ public class ProfilController implements Initializable {
         }
     }   
     @FXML
-      public void profil(ActionEvent event) {
-      
+      public void redirectToEdit(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader();
+    loader.setLocation(getClass().getResource("edit.fxml"));
+    Parent root = loader.load();
+    Scene mainScene = new Scene(root);
+
+
+    Stage primaryStage = (Stage) profilePane.getScene().getWindow();
+    primaryStage.setScene(mainScene);
+    primaryStage.show();
     }   
     
        @FXML
@@ -121,7 +129,7 @@ public class ProfilController implements Initializable {
             s.delete(iduser) ;
             
              FXMLLoader loader = new FXMLLoader();
-    loader.setLocation(getClass().getResource("login.fxml"));
+    loader.setLocation(getClass().getResource("edit.fxml"));
     Parent root = loader.load();
     Scene mainScene = new Scene(root);
 

@@ -5,25 +5,12 @@
  */
 package gui;
 
-import  entities.User;
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
-import services.UserService ;
-import com.sun.org.apache.xerces.internal.util.FeatureState;
+import entities.Outils;
+import entities.User;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException ;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,28 +18,31 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import utils.DataBase;
+import services.UserService;
+
 /**
  * FXML Controller class
  *
  * @author khalil
  */
-public class RegisterController implements Initializable {
-   
+public class EditController implements Initializable {
+
+    /**
+     * Initializes the controller class.
+     */
+     @FXML
+    private AnchorPane editPane ;
     @FXML
-    private AnchorPane registerPane ;
-    @FXML
-    private Button registerBtn;
+    private Button editBtn;
     @FXML
     private TextField tfUsername;
     @FXML
@@ -70,16 +60,30 @@ public class RegisterController implements Initializable {
      @FXML
     private Button imageBtn ;
     
-    private String image_filename = "" ;
-
+    private String image_filename  ;
     
+    UserService s = new UserService() ;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-    }    
+         User user = null ;
+        try {
+             user = s.findUserById(Outils.getCurrentSession()) ;
+         } catch (SQLException ex) {
+             Logger.getLogger(EditController.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         
+         tfUsername.setText(user.getUsername()) ;
+         tfEmail.setText(user.getEmail()) ;
+          tfAddress.setText(user.getAddress()) ;
+          tfPhone.setText(Integer.toString(user.getPhone())) ;
+          tfGender.setText(user.getGender()) ;
+          tfPassword.setText(user.getPassword()) ;
+          tfConfirmPassword.setText(user.getPassword()) ;
+           imageBtn.setText("old image") ;
+           image_filename = user.getImage_filename() ;
+    } 
     
-    @FXML
-    public void register(ActionEvent event)throws IOException {
+       public void edit(ActionEvent event)throws IOException {
         
        
         String username = tfUsername.getText();
@@ -89,19 +93,18 @@ public class RegisterController implements Initializable {
         String password=tfPassword.getText();
         String confirmpassword=tfConfirmPassword.getText();
         String phone =tfPhone.getText();
-      
         
-        try{
+           try{
             Alert alert; 
             if(username.isEmpty() || email.isEmpty() ||address.isEmpty() || password.isEmpty() || phone.isEmpty() || gender.isEmpty() || confirmpassword.isEmpty()){
-                alert = new Alert(AlertType.ERROR);
+                alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error Message");
                 alert.setHeaderText(null);
                 alert.setContentText("please fill all the fields");
                 alert.showAndWait();
             }
-            else if (!email.contains("@") || !email.contains(".")   ) {
-                 alert = new Alert(AlertType.ERROR);
+            else if (!email.contains("@") || !email.contains(".") || !(email.indexOf(".")  > email.indexOf("@") + 1)  ) {
+                 alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error Message");
                     alert.setHeaderText(null);
                     alert.setContentText("invalid email");
@@ -109,7 +112,7 @@ public class RegisterController implements Initializable {
             }
             else if(password.length() <8){
                 
-                    alert = new Alert(AlertType.ERROR);
+                    alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error Message");
                     alert.setHeaderText(null);
                     alert.setContentText("password must exceed 8 characters");
@@ -117,7 +120,7 @@ public class RegisterController implements Initializable {
             }
             else if(!password.equals(confirmpassword)){
                 
-                    alert = new Alert(AlertType.ERROR);
+                    alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error Message");
                     alert.setHeaderText(null);
                     alert.setContentText("password and confirm password must match");
@@ -125,45 +128,44 @@ public class RegisterController implements Initializable {
             }
                 else{
                      int tel = Integer.parseInt(phone);
-                    User u = new User(tel,username,email,address,password,gender,image_filename);
-                    UserService s  =new UserService();
-                    
-                    s.ajouter(u);
-                    
+                    User newuser = new User(tel,username,email,address,password,gender,image_filename);
+                   
                  
+                    
+                  
+                   
+                  
+                    s.modifier(Outils.getCurrentSession(),newuser);
+                    
+                    redirectToProfile(event) ;
                 
                     }
                 }
-                    catch(SQLException e) {
-                     Alert  alert = new Alert(AlertType.ERROR);
-                    alert.setTitle("Error");
-                    alert.setHeaderText("registration error");
-                    alert.setContentText("duplicate entry");
-                    alert.showAndWait();
-                    }
                   catch(Exception ex){
-                   Alert  alert = new Alert(AlertType.ERROR);
+                   Alert  alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error");
-                    alert.setHeaderText("registration error");
+                    alert.setHeaderText("update error");
                     alert.setContentText(ex.getMessage());
                     alert.showAndWait();
                    }
-    }
     
-    public void redirectToLogin(ActionEvent event)throws IOException {
-      FXMLLoader loader = new FXMLLoader();
-    loader.setLocation(getClass().getResource("login.fxml"));
+       }
+    
+    
+         public void redirectToProfile(ActionEvent event) throws IOException {
+             FXMLLoader loader = new FXMLLoader();
+    loader.setLocation(getClass().getResource("profil.fxml"));
     Parent root = loader.load();
     Scene mainScene = new Scene(root);
 
 
-    Stage primaryStage = (Stage) registerPane.getScene().getWindow();
+    Stage primaryStage = (Stage) editPane.getScene().getWindow();
     primaryStage.setScene(mainScene);
     primaryStage.show();
-    
-    }
-    
-       public void upload(ActionEvent event) {
+     }
+         
+         
+              public void upload(ActionEvent event) {
         FileChooser fc = new FileChooser();
         String imageFile = "";
         File f = fc.showOpenDialog(null);

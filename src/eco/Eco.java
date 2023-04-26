@@ -35,8 +35,11 @@ public class Eco {
          // service.ajouter(p) ;
          
          
-          service.delete(22) ;
-            System.out.println(service.findUserById(13).getUsername());
+       //   service.delete(22) ;
+           // System.out.println(service.findUserById(7).getUsername());
+           
+           // service.findUserByEmail("asma@gmail.com").setId(13) ;
+             System.out.println(service.findUserByEmail("khalil.b.khoud1998@gmail.com").getId());
          
         } catch (SQLException ex) {
           ex.printStackTrace() ;

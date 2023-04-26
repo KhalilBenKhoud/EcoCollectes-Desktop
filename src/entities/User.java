@@ -13,6 +13,18 @@ public class User {
     private String username, email, address ,password, gender, image_filename ;
     private String[] roles ;
 
+    public User(int id, int phone, String username, String email, String address, String password, String gender, String image_filename) {
+        this.id = id;
+        this.phone = phone;
+        this.username = username;
+        this.email = email;
+        this.address = address;
+        this.password = password;
+        this.gender = gender;
+        this.image_filename = image_filename;
+        this.roles = roles;
+    }
+
     public User( int phone, String username, String email, String address, String password, String gender, String image_filename) {
         
         this.phone = phone;

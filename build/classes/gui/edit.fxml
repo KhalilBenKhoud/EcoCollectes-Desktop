@@ -10,17 +10,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" fx:id="registerPane" prefHeight="533.0" prefWidth="723.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.RegisterController">
-   <children>
-      <VBox prefHeight="533.0" prefWidth="265.0" style="-fx-background-color: cadetblue;">
+<AnchorPane id="AnchorPane" fx:id="editPane" prefHeight="533.0" prefWidth="723.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.EditController">
+     <VBox prefHeight="533.0" prefWidth="265.0" style="-fx-background-color: cadetblue;">
          <children>
             <ImageView fitHeight="130.0" fitWidth="265.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/logo.png" />
                </image>
             </ImageView>
-         </children></VBox>
-      <TextField id="tfUsername" fx:id="tfUsername" layoutX="465.0" layoutY="32.0" promptText="username" />
+     </children></VBox>
+     <TextField id="tfUsername" fx:id="tfUsername" layoutX="465.0" layoutY="32.0" promptText="username" />
       <Label layoutX="344.0" layoutY="37.0" text="Username" />
       <TextField id="tfEmail" fx:id="tfEmail" layoutX="465.0" layoutY="81.0" promptText="email" />
       <Label layoutX="360.0" layoutY="86.0" text="Email" />
@@ -32,11 +31,11 @@
       <Label layoutX="360.0" layoutY="241.0" prefHeight="21.0" prefWidth="58.0" text="Gender" />
       <Label layoutX="357.0" layoutY="289.0" prefHeight="21.0" prefWidth="67.0" text="Password" />
       <Label layoutX="325.0" layoutY="336.0" prefHeight="21.0" prefWidth="129.0" text="Confirm Password" />
-      <Button id="registerBtn" fx:id="registerBtn" layoutX="447.0" layoutY="431.0" mnemonicParsing="false" onAction="#register" style="-fx-background-color: green; -fx-border-radius: 35px;" text="Register" textFill="#fcfcfc" />
+      <Button id="editBtn" fx:id="editBtn" layoutX="465.0" layoutY="432.0" mnemonicParsing="false" onAction="#edit" style="-fx-background-color: green; -fx-border-radius: 35px;" text="Edit" textFill="#fcfcfc" />
       <PasswordField id="tfPassword" fx:id="tfPassword" layoutX="465.0" layoutY="284.0" promptText="password" />
       <PasswordField id="tfConfirmPassword" fx:id="tfConfirmPassword" layoutX="465.0" layoutY="331.0" promptText="confirm password" />
-      <Hyperlink layoutX="324.0" layoutY="476.0" onAction="#redirectToLogin" style="-fx-font-size: 16px;" text="already have an account ? sign in" />
-      <Button fx:id="imageBtn" layoutX="480.0" layoutY="380.0" mnemonicParsing="false" onAction="#upload" style="-fx-background-color: gray;" text="select image" />
-      <Label layoutX="337.0" layoutY="387.0" text="Profile image" />
-   </children>
+   <Hyperlink layoutX="332.0" layoutY="463.0" onAction="#redirectToProfile" text="back to profile" />
+   <Label layoutX="341.0" layoutY="387.0" text="Profile image" />
+   <Button fx:id="imageBtn" layoutX="511.0" layoutY="382.0" mnemonicParsing="false" onAction="#upload" style="-fx-background-color: gray;" text="Button" textFill="#f5f5f5" />
+         
 </AnchorPane>

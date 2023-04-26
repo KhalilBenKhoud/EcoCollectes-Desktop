@@ -33,6 +33,11 @@ import javafx.scene.control.Alert;
 public class UserService {
     Connection connexion;
     Statement stm;
+    private int randomCode;
+
+    public int getRandomCode() {
+        return randomCode;
+    }
     
     public UserService() {
         connexion = DataBase.getInstance().getConnection();
@@ -118,6 +123,35 @@ public class UserService {
              ResultSet rst = pst.executeQuery();
               while (rst.next()) {
                 p = new User(
+                    rst.getInt("id") ,
+                    rst.getInt("phone"),
+                    rst.getString("username"),
+                    rst.getString("email"),
+                    rst.getString("address"),
+                    rst.getString("password"),
+                     rst.getString("gender"),
+                     rst.getString("image_filename")
+                   
+            );
+              }
+            
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+               return p ;
+           }
+                 public User findUserByEmail(String email) throws SQLException {
+               User p = null ;
+               try {
+             String req="select * from user where email = ?" ;
+            PreparedStatement pst = connexion.prepareStatement(req);
+             pst.setString(1, email); 
+         
+          
+             ResultSet rst = pst.executeQuery();
+              while (rst.next()) {
+                p = new User(
+                    rst.getInt("id") ,
                     rst.getInt("phone"),
                     rst.getString("username"),
                     rst.getString("email"),
@@ -135,7 +169,7 @@ public class UserService {
                return p ;
            }
            
-             public void modifier(User user, User newuser) {
+             public void modifier(int id, User newuser) {
         try {
             String req ="update user set username=?,email=?,phone=?,address=?,password=?,image_filename=?,gender=? where id=?";
             PreparedStatement pst = connexion.prepareStatement(req);
@@ -146,13 +180,40 @@ public class UserService {
             pst.setString(5, newuser.getPassword());
             pst.setString(6, newuser.getImage_filename());
             pst.setString(7, newuser.getGender());
-             pst.setInt(8, user.getId());
+             pst.setInt(8, id);
             pst.executeUpdate();
+            
+              Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("succesfully updated");
+                    alert.showAndWait(); 
            
             System.out.println("Utlisateur est modifié");
             } catch (SQLException ex) {
                 System.out.println(ex.getMessage());
+                   Alert  alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("update error");
+                    alert.setContentText(ex.getMessage());
+                    alert.showAndWait();
     }}
+             
+             public void updateEmail(int id,String email) throws SQLException {
+                 String req ="update user set email=? where id=?";
+            PreparedStatement pst = connexion.prepareStatement(req);
+             pst.setString(1, email);
+             pst.setInt(2,id) ;
+             pst.executeUpdate();
+             }
+              
+             public void updatePass(int id,String password) throws SQLException {
+             String req ="update user set password=? where id=?";
+            PreparedStatement pst = connexion.prepareStatement(req);
+             pst.setString(1, password);
+             pst.setInt(2,id) ;
+             pst.executeUpdate();
+             }
              
              public int compteExiste(String email, String password) {
                  int n = 0 ;
@@ -175,7 +236,7 @@ public class UserService {
         
           public void envoyerCodeVerif(String email) throws MessagingException {
         Random rand = new Random();
-        int randomCode = rand.nextInt(999999);
+         randomCode = rand.nextInt(999999);
         String subject = "Reseting Code";
         String message = "Your reset code is " + randomCode + "";
 
