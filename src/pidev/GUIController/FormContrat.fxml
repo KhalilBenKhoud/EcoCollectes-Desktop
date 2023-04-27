@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="formContrat_pane" prefHeight="448.0" prefWidth="760.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUIController.FormContratController">
+   <children>
+      <TextArea fx:id="description_field" layoutX="168.0" layoutY="69.0" prefHeight="130.0" prefWidth="423.0" promptText="Description..." styleClass="text-area" />
+      <Text layoutX="168.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description :" wrappingWidth="111.73675537109375" />
+      <Text layoutX="168.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date debut :" wrappingWidth="84.0" />
+      <Text layoutX="394.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date fin:" wrappingWidth="84.0" />
+      <DatePicker fx:id="dateDebut_field" layoutX="168.0" layoutY="242.0" prefHeight="26.0" prefWidth="195.0" promptText="Date debut..." />
+      <DatePicker fx:id="dateFin_field" layoutX="394.0" layoutY="242.0" prefHeight="26.0" prefWidth="195.0" promptText="Date fin..." />
+      <ChoiceBox fx:id="typeContrat_field" layoutX="168.0" layoutY="308.0" prefHeight="26.0" prefWidth="195.0" styleClass="text-field" />
+      <Text layoutX="168.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type de contrat  :" wrappingWidth="140.291015625" />
+      <Button fx:id="Ajouter_btn" layoutX="567.0" layoutY="380.0" mnemonicParsing="false" onAction="#handleOnClick" prefHeight="35.0" prefWidth="84.0" styleClass="addbtn" text="Ajouter" />
+      <TextField fx:id="montant_field" layoutX="394.0" layoutY="308.0" prefHeight="26.0" prefWidth="195.0" styleClass="textfield" />
+      <Text layoutX="394.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Montant :" wrappingWidth="74.71563720703125" />
+      <Button fx:id="cancel_btn" layoutX="459.0" layoutY="380.0" mnemonicParsing="false" onAction="#handleOnClickCancel" prefHeight="35.0" prefWidth="84.0" styleClass="refreshbtn" text="Cancel" />
+   </children>
+</AnchorPane>
