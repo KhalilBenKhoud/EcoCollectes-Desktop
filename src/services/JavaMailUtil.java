@@ -34,7 +34,7 @@ public class JavaMailUtil {
         properties.put("mail.smtp.port", "587");
         
         String myAcountEmail="mohamedkhalil.benkhoud@esprit.tn";
-        String myAcountPassword="223JMT1587";
+        String myAcountPassword="";
         Session session= Session.getInstance(properties,new Authenticator(){
             @Override
             protected PasswordAuthentication getPasswordAuthentication(){
