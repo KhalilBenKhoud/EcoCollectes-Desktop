@@ -65,6 +65,13 @@ public class LoginController implements Initializable  {
                        
                   
         }
+        else if(s.findUserByEmail(email).isBanned()) {
+             Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("you're banned");
+                    alert.showAndWait();
+        }
         else {
              Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Information Message");

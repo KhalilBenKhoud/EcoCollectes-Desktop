@@ -9,11 +9,14 @@ package entities;
  * @author khalil
  */
 public class User {
+
+    
    private int id, phone ;
     private String username, email, address ,password, gender, image_filename ;
     private String[] roles ;
+    boolean banned = false ;
 
-    public User(int id, int phone, String username, String email, String address, String password, String gender, String image_filename) {
+    public User(int id, int phone, String username, String email, String address, String password, String gender, String image_filename, boolean banned) {
         this.id = id;
         this.phone = phone;
         this.username = username;
@@ -23,6 +26,22 @@ public class User {
         this.gender = gender;
         this.image_filename = image_filename;
         this.roles = roles;
+        this.banned = banned ;
+    }
+
+    public User(int id, String username, boolean banned) {
+        this.id = id;
+        this.username = username;
+        this.banned = banned;
+    }
+    
+    
+    public User(int id, String username,String email, String image_filename, boolean banned) {
+         this.id = id ;
+        this.username = username;
+        this.email = email;
+        this.image_filename = image_filename;
+        this.banned = banned ;
     }
 
     public User( int phone, String username, String email, String address, String password, String gender, String image_filename) {
@@ -128,6 +147,13 @@ public class User {
 
     public void setRoles(String[] roles) {
         this.roles = roles;
+    }
+    public boolean isBanned() {
+        return banned;
+    }
+
+    public void setBanned(boolean banned) {
+        this.banned = banned;
     }
     
 }

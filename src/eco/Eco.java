@@ -16,13 +16,14 @@ import java.util.logging.Logger;
 import services.UserService ;
 import java.util.* ;
 import entities.User ;
+import javafx.collections.ObservableList;
 
 public class Eco {
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
            System.out.println("Hello World!");
         UserService service = new UserService() ;
         try {
@@ -40,6 +41,11 @@ public class Eco {
            
            // service.findUserByEmail("asma@gmail.com").setId(13) ;
              System.out.println(service.findUserByEmail("khalil.b.khoud1998@gmail.com").getId());
+             
+             
+             service.ban(1) ;
+              ObservableList<User> users = service.show()  ;
+               System.out.println(users) ;
          
         } catch (SQLException ex) {
           ex.printStackTrace() ;

@@ -55,8 +55,8 @@ public class UserService {
             User p;
             p = new User(
                     rst.getInt("id"),
-                    rst.getString("username")
-                   
+                    rst.getString("username"),
+                    rst.getBoolean("banned")
             );
             users.add(p);
         }
@@ -66,8 +66,8 @@ public class UserService {
     
         public void ajouter(User p) throws SQLException {
 
-        String req = "INSERT INTO `user` (`username`, `email`, `phone`, `address`  ,  `password`,`image_filename`, `gender`) "
-                + "VALUES ( ?, ?, ?,  ?, ?, ?, ?) ";
+        String req = "INSERT INTO `user` (`username`, `email`, `phone`, `address`  ,  `password`,`image_filename`, `gender`,`banned`) "
+                + "VALUES ( ?, ?, ?,  ?, ?, ?, ?, ?) ";
         try {
             PreparedStatement ps = connexion.prepareStatement(req);
             ps.setString(1, p.getUsername());
@@ -78,7 +78,7 @@ public class UserService {
              ps.setString(5, p.getPassword());
             ps.setString(6, p.getImage_filename());
             ps.setString(7, p.getGender());
-          
+           ps.setBoolean(8, p.isBanned());
 
             ps.executeUpdate();
             
@@ -130,8 +130,8 @@ public class UserService {
                     rst.getString("address"),
                     rst.getString("password"),
                      rst.getString("gender"),
-                     rst.getString("image_filename")
-                   
+                     rst.getString("image_filename"),
+                     rst.getBoolean("banned")
             );
               }
             
@@ -158,8 +158,8 @@ public class UserService {
                     rst.getString("address"),
                     rst.getString("password"),
                      rst.getString("gender"),
-                     rst.getString("image_filename")
-                   
+                     rst.getString("image_filename"),
+                      rst.getBoolean("banned")
             );
               }
             
@@ -168,6 +168,21 @@ public class UserService {
             }
                return p ;
            }
+                 
+            public void ban(int id) throws SQLException {
+                String req ="update user set banned=? where id=?";
+                PreparedStatement pst = connexion.prepareStatement(req);
+                 pst.setBoolean(1, true );
+                  pst.setInt(2, id);
+                  pst.executeUpdate();
+            }     
+                 public void allow(int id) throws SQLException {
+                String req ="update user set banned=? where id=?";
+                PreparedStatement pst = connexion.prepareStatement(req);
+                 pst.setBoolean(1, false );
+                  pst.setInt(2, id);
+                  pst.executeUpdate();
+            } 
            
              public void modifier(int id, User newuser) {
         try {
@@ -245,6 +260,32 @@ public class UserService {
         } catch (javax.mail.MessagingException ex) {
             Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+          
+                public ObservableList<User> show() throws SQLException {
+          ObservableList<User> users = FXCollections.observableArrayList();
+        String req = "select * from user";
+        stm = connexion.createStatement();
+        //ensemble de resultat
+        ResultSet rst = stm.executeQuery(req);
+
+        while (rst.next()) {
+            User p;
+            p = new User(
+                  rst.getInt("id") ,
+                    rst.getInt("phone"),
+                    rst.getString("username"),
+                    rst.getString("email"),
+                    rst.getString("address"),
+                    rst.getString("password"),
+                     rst.getString("gender"),
+                     rst.getString("image_filename"),
+                      rst.getBoolean("banned")
+                    
+            );
+            users.add(p);
+        }
+        return users;  
     }
 
 }

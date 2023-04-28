@@ -38,5 +38,6 @@
       <Hyperlink layoutX="324.0" layoutY="476.0" onAction="#redirectToLogin" style="-fx-font-size: 16px;" text="already have an account ? sign in" />
       <Button fx:id="imageBtn" layoutX="480.0" layoutY="380.0" mnemonicParsing="false" onAction="#upload" style="-fx-background-color: gray;" text="select image" />
       <Label layoutX="337.0" layoutY="387.0" text="Profile image" />
+      <ImageView fx:id="previewImage" fitHeight="73.0" fitWidth="67.0" layoutX="608.0" layoutY="369.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

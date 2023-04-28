@@ -7,6 +7,7 @@
             <file>file:/C:/Users/khalil/Documents/NetBeansProjects/eco/src/services/JavaMailUtil.java</file>
             <file>file:/C:/Users/khalil/Documents/NetBeansProjects/eco/src/entities/User.java</file>
             <file>file:/C:/Users/khalil/Documents/NetBeansProjects/eco/src/gui/RegisterController.java</file>
+            <file>file:/C:/Users/khalil/Documents/NetBeansProjects/eco/src/gui/UserBackOfficeController.java</file>
             <file>file:/C:/Users/khalil/Documents/NetBeansProjects/eco/src/gui/edit.fxml</file>
             <file>file:/C:/Users/khalil/Documents/NetBeansProjects/eco/src/services/UserService.java</file>
             <file>file:/C:/Users/khalil/Documents/NetBeansProjects/eco/src/entities/Outils.java</file>
@@ -16,7 +17,9 @@
             <file>file:/C:/Users/khalil/Documents/NetBeansProjects/eco/src/gui/LoginController.java</file>
             <file>file:/C:/Users/khalil/Documents/NetBeansProjects/eco/src/gui/resetPassword.fxml</file>
             <file>file:/C:/Users/khalil/Documents/NetBeansProjects/eco/src/eco/Eco.java</file>
+            <file>file:/C:/Users/khalil/Documents/NetBeansProjects/eco/src/utils/DataBase.java</file>
             <file>file:/C:/Users/khalil/Documents/NetBeansProjects/eco/src/gui/login.java</file>
+            <file>file:/C:/Users/khalil/Documents/NetBeansProjects/eco/src/gui/userBackOffice.java</file>
         </group>
     </open-files>
 </project-private>

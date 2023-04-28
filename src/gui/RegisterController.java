@@ -19,6 +19,8 @@ import javafx.scene.layout.BorderPane;
 import services.UserService ;
 import com.sun.org.apache.xerces.internal.util.FeatureState;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -38,6 +40,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -71,6 +75,9 @@ public class RegisterController implements Initializable {
     private Button imageBtn ;
     
     private String image_filename = "" ;
+    
+      @FXML
+    private ImageView previewImage ;
 
     
     @Override
@@ -175,6 +182,20 @@ public class RegisterController implements Initializable {
             image_filename = imageFile ;
             imageBtn.setText(f.getName()) ;
         }
+        
+         
+            FileInputStream stream ;
+          
+        try { 
+            stream = new FileInputStream(image_filename);
+            
+            Image image = new Image(stream);
+
+          previewImage.setImage(image) ;
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(RegisterController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+          
     }
     
 }
