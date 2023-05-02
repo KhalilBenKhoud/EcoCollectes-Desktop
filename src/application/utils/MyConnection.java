@@ -1,9 +1,7 @@
 package application.utils;
 
 import java.sql.*;
-
-
-public class MyConnexion {
+public class MyConnection {
 	String url = "jdbc:mysql://localhost:3306/eco";
 
 	String login = "root";
@@ -12,11 +10,7 @@ public class MyConnexion {
 	
 	Connection cnx;
 	
-	
-	public static MyConnexion instance; 
-	
-
-	private MyConnexion() {
+	public MyConnection() {
 		try {
 		cnx=  DriverManager.getConnection(url, login ,pwd);	
 		System.out.println("connexion etablie !");
@@ -24,16 +18,6 @@ public class MyConnexion {
 			System.err.println(ex.getMessage());
 		}
 	}
-	public Connection getCnx() {
-		return cnx;
-	}
-	//class pat SingleTOn
-	public static MyConnexion getInsance() {
-		if(instance == null ) {
-			instance = new MyConnexion();	
-		}
-		return instance;
-	}
-	
+
 
 }
