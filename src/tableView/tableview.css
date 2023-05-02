@@ -1,0 +1,95 @@
+.mainFxmlClass {
+    -fx-background-color: #f2f2f2;
+}
+
+#CollectsTable {
+    -fx-font-size: 14px;
+    -fx-alignment: center;
+}
+
+#idCol, #nameCol, #dateCol, #emailCol, #editCol {
+    -fx-alignment: center;
+}
+
+#filterFld {
+    -fx-font-size: 14px;
+    -fx-background-color: #fff;
+    -fx-prompt-text-fill: #b7b7b7;
+    -fx-border-color: #ccc;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+}
+
+#filterFld:focused {
+    -fx-border-color: #4d90fe;
+    -fx-box-shadow: 0 0 5px #4d90fe;
+}
+
+Text {
+    -fx-font-size: 25px;
+    -fx-fill: #43a843;
+    -fx-font-weight: bold;
+}
+
+HBox {
+    -fx-spacing: 10px;
+}
+
+HBox > .glyph-icon {
+    -fx-cursor: hand;
+}
+
+HBox > .glyph-icon:hover {
+    -fx-fill: #fff;
+}
+
+.HBox .glyph-icon {
+    -fx-background-color: #fff;
+    -fx-border-radius: 50%;
+    -fx-padding: 10px;
+}
+
+.HBox .glyph-icon:hover {
+    -fx-background-color: #43a843;
+}
+
+.HBox > .glyph-icon:last-child {
+    -fx-margin-right: 0;
+}
+
+#CollectsTable .table-row-cell:odd {
+    -fx-background-color: #f7f7f7;
+}
+
+#CollectsTable .table-row-cell:selected {
+    -fx-background-color: #43a843;
+    -fx-text-fill: #fff;
+}
+
+#CollectsTable .table-column:not(:last-child) {
+    -fx-padding: 5px 10px;
+}
+
+#CollectsTable .table-column:last-child {
+    -fx-alignment: center;
+    -fx-padding: 0 10px;
+}
+
+#CollectsTable .table-cell {
+    -fx-alignment: center;
+}
+
+#CollectsTable .table-cell:last-child {
+    -fx-padding: 0;
+}
+
+#CollectsTable .table-cell:last-child > .glyph-icon {
+    -fx-background-color: transparent;
+    -fx-fill: #43a843;
+    -fx-font-size: 18px;
+}
+
+#CollectsTable .table-cell:last-child > .glyph-icon:hover {
+    -fx-fill: #fff;
+    -fx-background-color: #43a843;
+}
