@@ -3,23 +3,32 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/khalil/Documents/NetBeansProjects/eco/src/gui/ForgotController.java</file>
-            <file>file:/C:/Users/khalil/Documents/NetBeansProjects/eco/src/services/JavaMailUtil.java</file>
-            <file>file:/C:/Users/khalil/Documents/NetBeansProjects/eco/src/entities/User.java</file>
-            <file>file:/C:/Users/khalil/Documents/NetBeansProjects/eco/src/gui/RegisterController.java</file>
-            <file>file:/C:/Users/khalil/Documents/NetBeansProjects/eco/src/gui/UserBackOfficeController.java</file>
-            <file>file:/C:/Users/khalil/Documents/NetBeansProjects/eco/src/gui/edit.fxml</file>
-            <file>file:/C:/Users/khalil/Documents/NetBeansProjects/eco/src/services/UserService.java</file>
-            <file>file:/C:/Users/khalil/Documents/NetBeansProjects/eco/src/entities/Outils.java</file>
-            <file>file:/C:/Users/khalil/Documents/NetBeansProjects/eco/src/gui/ResetPasswordController.java</file>
-            <file>file:/C:/Users/khalil/Documents/NetBeansProjects/eco/src/gui/ProfilController.java</file>
-            <file>file:/C:/Users/khalil/Documents/NetBeansProjects/eco/src/gui/EditController.java</file>
-            <file>file:/C:/Users/khalil/Documents/NetBeansProjects/eco/src/gui/LoginController.java</file>
-            <file>file:/C:/Users/khalil/Documents/NetBeansProjects/eco/src/gui/resetPassword.fxml</file>
-            <file>file:/C:/Users/khalil/Documents/NetBeansProjects/eco/src/eco/Eco.java</file>
-            <file>file:/C:/Users/khalil/Documents/NetBeansProjects/eco/src/utils/DataBase.java</file>
-            <file>file:/C:/Users/khalil/Documents/NetBeansProjects/eco/src/gui/login.java</file>
-            <file>file:/C:/Users/khalil/Documents/NetBeansProjects/eco/src/gui/userBackOffice.java</file>
+            <file>file:/C:/Users/GAMERS/Documents/NetBeansProjects/ConnectionBD3A39/src/connectionbd3a39/tests/MainClass.java</file>
+            <file>file:/C:/Users/GAMERS/Documents/NetBeansProjects/ConnectionBD3A39/src/connectionbd3a39/gui/PhonePromptController.java</file>
+            <file>file:/C:/Users/GAMERS/Documents/NetBeansProjects/ConnectionBD3A39/src/connectionbd3a39/gui/AjoutAnnonce.fxml</file>
+            <file>file:/C:/Users/GAMERS/Documents/NetBeansProjects/ConnectionBD3A39/src/connectionbd3a39/gui/AnnonceFXMLController.java</file>
+            <file>file:/C:/Users/GAMERS/Documents/NetBeansProjects/ConnectionBD3A39/src/connectionbd3a39/services/ServiceAnnonce.java</file>
+            <file>file:/C:/Users/GAMERS/Documents/NetBeansProjects/ConnectionBD3A39/src/connectionbd3a39/gui/Annonce.fxml</file>
+            <file>file:/C:/Users/GAMERS/Documents/NetBeansProjects/ConnectionBD3A39/src/connectionbd3a39/services/ServiceCommentaire.java</file>
+            <file>file:/C:/Users/GAMERS/Documents/NetBeansProjects/ConnectionBD3A39/src/tn/edu/esprit/utils/DataSource.java</file>
+            <file>file:/C:/Users/GAMERS/Documents/NetBeansProjects/ConnectionBD3A39/src/connectionbd3a39/gui/PhonePrompt.fxml</file>
+            <file>file:/C:/Users/GAMERS/Documents/NetBeansProjects/ConnectionBD3A39/src/connectionbd3a39/gui/HomePageController.java</file>
+            <file>file:/C:/Users/GAMERS/Documents/NetBeansProjects/ConnectionBD3A39/src/connectionbd3a39/gui/CommentaireCard.fxml</file>
+            <file>file:/C:/Users/GAMERS/Documents/NetBeansProjects/ConnectionBD3A39/src/connectionbd3a39/gui/AnnonceFXML.fxml</file>
+            <file>file:/C:/Users/GAMERS/Documents/NetBeansProjects/ConnectionBD3A39/src/connectionbd3a39/gui/CatalogueAnnonce.fxml</file>
+            <file>file:/C:/Users/GAMERS/Documents/NetBeansProjects/ConnectionBD3A39/src/connectionbd3a39/gui/AnnonceCardController.java</file>
+            <file>file:/C:/Users/GAMERS/Documents/NetBeansProjects/ConnectionBD3A39/src/connectionbd3a39/gui/AnnonceCard.fxml</file>
+            <file>file:/C:/Users/GAMERS/Documents/NetBeansProjects/ConnectionBD3A39/src/connectionbd3a39/gui/HomePage.fxml</file>
+            <file>file:/C:/Users/GAMERS/Documents/NetBeansProjects/ConnectionBD3A39/src/connectionbd3a39/gui/AnnonceController.java</file>
+            <file>file:/C:/Users/GAMERS/Documents/NetBeansProjects/ConnectionBD3A39/src/connectionbd3a39/gui/AjoutAnnonceController.java</file>
+            <file>file:/C:/Users/GAMERS/Documents/NetBeansProjects/ConnectionBD3A39/src/connectionbd3a39/gui/HomePageGUI.java</file>
+            <file>file:/C:/Users/GAMERS/Documents/NetBeansProjects/ConnectionBD3A39/src/connectionbd3a39/entities/Commentaire.java</file>
+            <file>file:/C:/Users/GAMERS/Documents/NetBeansProjects/ConnectionBD3A39/src/connectionbd3a39/gui/AnnonceGUI.java</file>
+            <file>file:/C:/Users/GAMERS/Documents/NetBeansProjects/ConnectionBD3A39/src/connectionbd3a39/entities/Annonce.java</file>
+            <file>file:/C:/Users/GAMERS/Documents/NetBeansProjects/ConnectionBD3A39/src/connectionbd3a39/services/IService.java</file>
+            <file>file:/C:/Users/GAMERS/Documents/NetBeansProjects/ConnectionBD3A39/src/connectionbd3a39/gui/CatalogueAnnonceController.java</file>
+            <file>file:/C:/Users/GAMERS/Documents/NetBeansProjects/ConnectionBD3A39/src/connectionbd3a39/gui/CommentaireCardController.java</file>
+            <file>file:/C:/Users/GAMERS/Documents/NetBeansProjects/ConnectionBD3A39/src/connectionbd3a39/tools/SMS.java</file>
         </group>
     </open-files>
 </project-private>

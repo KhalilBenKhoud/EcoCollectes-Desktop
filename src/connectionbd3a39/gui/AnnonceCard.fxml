@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox fx:id="box" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="285.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="connectionbd3a39.gui.AnnonceCardController">
+   <children>
+      <AnchorPane id="AnchorPane" prefHeight="350.0" prefWidth="250.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="75.0" prefWidth="275.0">
+               <children>
+                  <Label text="Titre:" textFill="WHITE">
+                     <font>
+                        <Font name="Verdana Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelTitre" text=" Titre" textFill="WHITE">
+                     <font>
+                        <Font name="Verdana Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Separator layoutX="3.0" layoutY="74.0" prefWidth="270.0" />
+            <HBox alignment="CENTER" layoutY="75.0" prefHeight="75.0" prefWidth="275.0">
+               <children>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="labelModif" alignment="CENTER" contentDisplay="CENTER" layoutX="40.0" layoutY="37.0" prefHeight="31.0" prefWidth="152.0" text="DateModif" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Verdana Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="6.0" layoutY="14.0" text="Dernière Modification:" textFill="WHITE">
+                           <font>
+                              <Font name="Verdana Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+            <Separator layoutX="3.0" layoutY="149.0" prefWidth="270.0" />
+            <HBox alignment="CENTER" layoutY="149.0" prefHeight="151.0" prefWidth="275.0">
+               <children>
+                  <AnchorPane prefHeight="200.0" prefWidth="272.0">
+                     <children>
+                        <Label layoutX="75.0" layoutY="3.0" text="Description:" textFill="WHITE">
+                           <font>
+                              <Font name="Verdana Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <TextArea fx:id="labelDesc" editable="false" layoutY="28.0" prefHeight="113.0" prefWidth="270.0" wrapText="true">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+            <Separator layoutX="3.0" layoutY="299.0" prefWidth="270.0" />
+            <HBox alignment="CENTER" layoutY="300.0" prefHeight="50.0" prefWidth="275.0">
+               <children>
+                  <Button fx:id="btnDetails" mnemonicParsing="false" onAction="#toAnnonce" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: #4b5463;" text="Details.." textFill="#fcfcfc" />
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </children>
+</HBox>

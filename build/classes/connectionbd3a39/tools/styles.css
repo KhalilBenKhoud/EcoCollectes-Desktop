@@ -1,0 +1,34 @@
+.transparent {
+	-fx-background-color: rgba(0,0,0,0);
+	-fx-background-radius: 15px;
+	-fx-alignment: center;
+}
+.transparent .viewport{
+	
+	-fx-background-radius: 15px;
+}
+.transparent .scroll-bar:horizontal .thumb,
+.transparent .scroll-bar:vertical .thumb {
+	-fx-padding:5px;
+    -fx-background-color:derive(black,90%);
+	-fx-background-insets: 2, 0, 0;
+	-fx-background-radius: 2em;
+ 
+}
+
+.bar{
+	-fx-background-radius: 15px;
+	-fx-background-color:  #3F2B63;
+}
+.btn{
+	-fx-background-color: grey;
+}
+.btnSide:hover{
+	-fx-background-color:#69BFC2;
+}
+.btnSide:pressed{
+    -fx-background-color:#568384;
+}
+.btnSide{
+	-fx-background-color: cadetblue;
+}
